@@ -1,8 +1,7 @@
 name: Testing Spring Boot Code On Github Actions
 on:
   push:
-    branches:
-      - github-actions-spring-boot
+    branches: [ github-actions-spring-boot ]
 jobs:
   test:
     runs-on: ubuntu-22.04
