@@ -1,14 +1,17 @@
 name: Testing Spring Boot Code On Github Actions
 
-on: [push]
+on:
+  push:
+    branches:
+      - github-actions-spring-boot
 
 jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2 #uses：actionsを使う場合
-      - run: docker-compose build #run：コマンド、またはスクリプトを実行する場合
-      - run: docker-compose up --abort-on-container-exit
+      - run: docker-compose -f docker-compose-githubactions.yml build #run：コマンド、またはスクリプトを実行する場合
+      - run: docker-compose -f docker-compose-githubactions.yml up --abort-on-container-exit
       - if: success()
         run: test success
       - if: failure()
