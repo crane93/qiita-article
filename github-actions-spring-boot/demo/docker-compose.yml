@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  web:
+    container_name: 'web'
+    build:
+      context: .
+    tty: true
+    working_dir: '/demo/home'
+    volumes:
+      - .:/demo/home:cached
+    ports: 
+      - "8080:8080"
+    entrypoint: |
+      bash -e -c "
+      ./gradlew test
+      " 
