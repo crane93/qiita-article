@@ -11,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.util.List;
 
 import com.example.demo.domain.video.Video;
@@ -27,7 +31,7 @@ public class Youtuder{
     @Column
     private String youtuderName;
 
-    @OneToMany(mappedBy="youtuder", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="youtuder", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Video> videos;
 
     @Builder

@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.example.demo.domain.youtuder.Youtuder;
 
@@ -29,7 +32,7 @@ public class Video{
     @Column(name = "youtuder_id")
     private Integer youtuderId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="youtuder_id", insertable=false, updatable=false)
     private Youtuder youtuder;
 
